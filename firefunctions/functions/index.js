@@ -6,16 +6,15 @@ var cors = require("cors");
 admin.initializeApp(functions.config().firebase);
 exports.addContact = functions.https.onRequest(function (request, response) {
     //var ref = admin.database().ref('/users')
-    var corsFn = cors();
-    corsFn(request, response, function () {
-        var contactsRef = admin.database().ref('/contacts');
-        contactsRef.set({
-            firstname: 'nnamdi',
-            lastname: 'chidume',
-            email: 'kurtwanger40@gmail.com'
+    var contactsRef = admin.database().ref('/contacts');
+    cors()(request, response, function () {
+        contactsRef.push({
+            firstname: request.body.firstname,
+            lastname: request.body.lastname,
+            email: request.body.email
         });
-        response.send(request.body);
     });
+    response.send(request.body);
 });
 exports.getContactList = functions.https.onRequest(function (request, response) {
     response.send("Hello from Firebase!");
