@@ -1,0 +1,23 @@
+[debug] [2017-11-03T08:08:19.621Z] ----------------------------------------------------------------------
+[debug] [2017-11-03T08:08:19.626Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only functions
+[debug] [2017-11-03T08:08:19.627Z] CLI Version:   3.12.0
+[debug] [2017-11-03T08:08:19.627Z] Platform:      win32
+[debug] [2017-11-03T08:08:19.628Z] Node Version:  v6.10.0
+[debug] [2017-11-03T08:08:19.638Z] Time:          Fri Nov 03 2017 09:08:19 GMT+0100 (W. Central Africa Standard Time)
+[debug] [2017-11-03T08:08:19.639Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-03T08:08:19.787Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-03T08:08:19.793Z] > authorizing via signed-in user
+[debug] [2017-11-03T08:08:19.799Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-11-03T08:08:19.800Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/p1ys6idV9wvehSc1ugrQcswX4mJSFaWD0xoEd-qUm0mSBA-BB9A8_KOdwAbpLJHH',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Nov 03 2017 09:08:19 GMT+0100 (W. Central Africa Standard Time)
+[debug] [2017-11-03T08:08:23.827Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-03T08:08:23.895Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/myreddit-clone  
+ Fri Nov 03 2017 09:08:23 GMT+0100 (W. Central Africa Standard Time)
+[debug] [2017-11-03T08:08:25.419Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-03T08:08:25.424Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/myreddit-clone/tokens  
+ Fri Nov 03 2017 09:08:25 GMT+0100 (W. Central Africa Standard Time)
