@@ -12,6 +12,7 @@
   "author": "Chidume Nnamdi <kurtwanger40@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/core-js": "^0.9.43",
     "@types/firebase": "^2.4.32",
     "@types/load-json-file": "^2.0.7",
     "@types/node": "^8.0.47",
@@ -29,6 +30,7 @@
     "axios": "^0.16.2",
     "chalk": "^2.3.0",
     "commander": "^2.11.0",
+    "core-js": "^2.5.1",
     "firebase": "^4.6.0",
     "inquirer": "^3.3.0",
     "load-json-file": "^3.0.0",

@@ -11,4 +11,5 @@ This is a command-line contact management system app built with TypeScript, Node
     cd contact-manager
 ```
 * Run `npm install` to install node dependencies.
+
 ### Usage

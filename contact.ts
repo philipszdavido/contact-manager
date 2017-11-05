@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+import './polyfills.ts'
 import * as commander from 'commander'
 import * as inquirer from 'inquirer'
 import * as loadjsonfile from 'load-json-file'
@@ -7,36 +7,7 @@ import * as writejsonfile from 'write-json-file'
 import chalk from 'chalk'
 import * as progress from 'progress'
 import * as actions from './logic';
-
-let questions: Array<Object> = [
-    {
-        type: 'input',
-        name: 'firstname',
-        message: 'Enter first name'
-    },
-    {
-        type: 'input',
-        name: 'lastname',
-        message: 'Enter Lastname'
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'Enter Your Email Address'
-    }
-]
-let sendMailQuestions: Array<Object> = [
-    {
-        type: 'input',
-        name: 'name',
-        message: 'Enter the contact Firstname or Lastname'
-    },
-    {
-        type: 'input',
-        name: 'msg',
-        message: 'Type Your Message'
-    }
-]
+import { getIdQuestions, questions, sendMailQuestions, updateContactQuestions } from './questions'
 
 commander
     .version('1.0.0')
@@ -52,30 +23,31 @@ commander
     })
 
 commander
-    .command('getContact <name>')
+    .command('getContact')
     .alias('g')
     .description('Get Contact')
-    .action(name => {
+    .action(() => {
         console.log(chalk.yellow('=========*** Contact Management System ***=========='))
-        actions.getContact(name)
+        inquirer.prompt(getIdQuestions).then((answers) => actions.getContact(answers.id))
+        
     })
 commander
-    .command('updateContact <_id>')
+    .command('updateContact')
     .alias('u')
     .description('Update Contact')
-    .action(id => {
+    .action(() => {
         console.log(chalk.yellow('=========*** Contact Management System ***=========='))
-        actions.updateContact(id)
+        inquirer.prompt(updateContactQuestions).then((answers) => actions.updateContact(answers))
     })
 commander
-    .command('deleteContact <_id>')
+    .command('deleteContact')
     .alias('d')
     .description('Delete a contact')
-    .action(id => {
+    .action(() => {
         console.log(chalk.yellow('=========*** Contact Management System ***=========='))
         var bar = new progress(':bar', {total: 10})
         bar.tick()
-        actions.deleteContact(id)
+        inquirer.prompt(getIdQuestions).then((answers) => actions.deleteContact(answers.id))
     })
 commander
     .command('getContactList')
