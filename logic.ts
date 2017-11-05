@@ -7,22 +7,29 @@ const url = "https://us-central1-myreddit-clone.cloudfunctions.net"
 export const addContact = (answers: any) => {
     console.log(chalk.yellowBright(answers))
     axios.post(url + '/addContact',answers).then((response) => {
-        console.log(response.data)
+        console.log(chalk.magentaBright('New contact added'))
     }, err => console.log(err))
 }
-export const getContact= (id: number) => {
+export const getContact = (id: number) => {
+    ( async ()=>{
+        let response = await axios.get(url + '/getContact/' + id + '/')
+    })()
     axios.get(url + '/getContact/' + id + '/').then((response) => {
-        console.log(response.data)
+        var obj = response.data
+        for (var key in obj) {
+            console.log(chalk.blue('==============='))
+            console.log(chalk.greenBright('id: ' +id + '\nFirstname: ' + obj[key].firstname + '\nLastname: ' + obj[key].lastname + '\nEmail: ' + obj[key].email))
+        }
     }, err => console.log(err))
 }
 export const updateContact= (contact: any) => {
     axios.put(url + '/updateContact/' + contact.id , contact).then((response) => {
-        console.log(response.data)
+        console.log(chalk.cyanBright('Contact updated'))
     }, err => console.log(err))
 }
 export const deleteContact= (id: number) => {
     axios.delete(url + '/deleteContact/' + id).then((response) => {
-        console.log(response.data)
+        console.log(chalk.bgMagentaBright('Contact deleted'))
     }, err => console.log(err))
 }
 export const getContactList= () => {

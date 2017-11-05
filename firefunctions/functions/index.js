@@ -8,7 +8,6 @@ var express = require("express");
 admin.initializeApp(functions.config().firebase);
 var contactsRef = admin.database().ref('/contacts');
 exports.addContact = functions.https.onRequest(function (request, response) {
-    var contactsRef = admin.database().ref('/contacts');
     cors()(request, response, function () {
         contactsRef.push({
             firstname: request.body.firstname,
@@ -23,7 +22,6 @@ exports.addContact = functions.https.onRequest(function (request, response) {
         } });
 });
 exports.getContactList = functions.https.onRequest(function (request, response) {
-    var contactsRef = admin.database().ref('/contacts');
     console.log('getContacts');
     contactsRef.once('value', function (data) {
         response.send({
@@ -46,7 +44,7 @@ app.put('/:id', function (req, res, next) {
 app.delete('/:id', function (req, res, next) {
     console.log('delete');
     admin.database().ref('/contacts/' + req.params.id).remove();
-    req.send(req.params.id);
+    res.send(req.params.id);
     next();
 });
 app.get('/:id', function (req, res, next) {
