@@ -45,8 +45,8 @@ commander
     .description('Delete a contact')
     .action(() => {
         console.log(chalk.yellow('=========*** Contact Management System ***=========='))
-        var bar = new progress(':bar', {total: 10})
-        bar.tick()
+        /*var bar = new progress(':bar', {total: 10})
+        bar.tick()*/
         inquirer.prompt(getIdQuestions).then((answers) => actions.deleteContact(answers.id))
     })
 commander

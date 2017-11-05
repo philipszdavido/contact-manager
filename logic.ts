@@ -21,7 +21,9 @@ export const updateContact= (contact: any) => {
     }, err => console.log(err))
 }
 export const deleteContact= (id: number) => {
-
+    axios.delete(url + '/deleteContact/' + id).then((response) => {
+        console.log(response.data)
+    }, err => console.log(err))
 }
 export const getContactList= () => {
     axios.get(url + '/getContactList').then((response) => {

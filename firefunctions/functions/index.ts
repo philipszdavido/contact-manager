@@ -8,7 +8,6 @@ admin.initializeApp(functions.config().firebase)
 var contactsRef: admin.database.Reference = admin.database().ref('/contacts')
 
 exports.addContact = functions.https.onRequest((request: any, response: any) => {
-var contactsRef: admin.database.Reference = admin.database().ref('/contacts')
         cors()(request, response, () => {
             contactsRef.push({
                 firstname: request.body.firstname,
@@ -24,7 +23,6 @@ var contactsRef: admin.database.Reference = admin.database().ref('/contacts')
 })
 
 exports.getContactList = functions.https.onRequest((request: any, response: any) => {
-var contactsRef: admin.database.Reference = admin.database().ref('/contacts')
     console.log('getContacts')
     contactsRef.once('value', (data) => {
         response.send({
@@ -51,7 +49,7 @@ app.put('/:id', (req: any, res: any, next: any) => {
 app.delete('/:id', (req: any, res: any, next: any) => {
     console.log('delete')
     admin.database().ref('/contacts/' + req.params.id).remove()
-    req.send(req.params.id)
+    res.send(req.params.id)
     next()
 })
 
