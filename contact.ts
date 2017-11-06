@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import './polyfills.ts'
+import './polyfills'
 import * as commander from 'commander'
 import * as inquirer from 'inquirer'
 import chalk from 'chalk'

@@ -3,8 +3,16 @@
         "target": "es5",
         "lib": ["es2017", "es2015", "dom", "es6"],
         "module": "commonjs",
-        "outDir": "./dist",
+        "outDir": "./",
         "sourceMap": false,
         "strict": true
-    }
+    },
+    "include": [
+        "**.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "firefunctions"
+    ]
+
 }
