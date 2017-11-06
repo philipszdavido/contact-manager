@@ -11,15 +11,13 @@ export let questions: Array<Object> = [
     },
     {
         type: 'input',
-        name: 'email',
-        message: 'Enter Your Email Address'
-    }
-]
-export let sendMailQuestions: Array<Object> = [
+        name: 'phone',
+        message: 'Enter Phone Number'
+    },
     {
         type: 'input',
-        name: 'id',
-        message: 'Enter the contact Firstname or Lastname'
+        name: 'email',
+        message: 'Enter Your Email Address'
     }
 ]
 export let getIdQuestions: Array<Object> = [

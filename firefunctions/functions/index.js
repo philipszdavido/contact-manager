@@ -12,17 +12,18 @@ exports.addContact = functions.https.onRequest(function (request, response) {
         contactsRef.push({
             firstname: request.body.firstname,
             lastname: request.body.lastname,
+            phone: request.body.phone,
             email: request.body.email
         });
     });
     response.send({ 'msg': 'Done', 'data': {
             firstname: request.body.firstname,
             lastname: request.body.lastname,
+            phone: request.body.phone,
             email: request.body.email
         } });
 });
 exports.getContactList = functions.https.onRequest(function (request, response) {
-    console.log('getContacts');
     contactsRef.once('value', function (data) {
         response.send({
             'res': data.val()
@@ -32,23 +33,21 @@ exports.getContactList = functions.https.onRequest(function (request, response) 
 var app = express();
 app.use(cors({ origin: true }));
 app.put('/:id', function (req, res, next) {
-    console.log('put');
     admin.database().ref('/contacts/' + req.params.id).update({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
+        phone: req.body.phone,
         email: req.body.email
     });
     res.send(req.body);
     next();
 });
 app.delete('/:id', function (req, res, next) {
-    console.log('delete');
     admin.database().ref('/contacts/' + req.params.id).remove();
     res.send(req.params.id);
     next();
 });
 app.get('/:id', function (req, res, next) {
-    console.log('get');
     admin.database().ref('/contacts/' + req.params.id).once('value', function (data) {
         var sn = data.val();
         res.send({

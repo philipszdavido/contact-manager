@@ -1,47 +1,76 @@
-import * as firebase from 'firebase/app'
 import axios from 'axios'
 import chalk from 'chalk'
+import * as ora from 'ora'
 
-const url = "https://us-central1-myreddit-clone.cloudfunctions.net"
+const url: string = "https://us-central1-myreddit-clone.cloudfunctions.net"
 
 export const addContact = (answers: any) => {
-    console.log(chalk.yellowBright(answers))
-    axios.post(url + '/addContact',answers).then((response) => {
-        console.log(chalk.magentaBright('New contact added'))
-    }, err => console.log(err))
+    (async () => {
+        try {
+            const spinner = ora('Adding contact ...').start();
+            let response = await axios.post(`${url}/addContact`,answers)
+            spinner.stop()
+            console.log(chalk.magentaBright('New contact added'))
+        } catch (error) {
+            console.log(error)
+        }
+    })()
 }
 export const getContact = (id: number) => {
     ( async ()=>{
-        let response = await axios.get(url + '/getContact/' + id + '/')
-    })()
-    axios.get(url + '/getContact/' + id + '/').then((response) => {
-        var obj = response.data
-        for (var key in obj) {
-            console.log(chalk.blue('==============='))
-            console.log(chalk.greenBright('id: ' +id + '\nFirstname: ' + obj[key].firstname + '\nLastname: ' + obj[key].lastname + '\nEmail: ' + obj[key].email))
+        try {
+            const spinner = ora('Fetching contact ...').start();
+            let response = await axios.get(`${url}/getContact/${id}/`)
+            spinner.clear()
+            spinner.stop()
+            var obj = response.data
+            for (var key in obj) {
+                console.log(chalk.blue('==============='))
+                console.log(chalk.greenBright(`id: ${id} \nFirstname: ${obj[key].firstname} \nLastname: ${obj[key].lastname} \nPhone Number: ${obj[key].phone} \nEmail: ${obj[key].email}`))
+            }            
+        } catch (error) {
+            console.log(error)
         }
-    }, err => console.log(err))
+    })()
 }
 export const updateContact= (contact: any) => {
-    axios.put(url + '/updateContact/' + contact.id , contact).then((response) => {
-        console.log(chalk.cyanBright('Contact updated'))
-    }, err => console.log(err))
+    (async () => {
+        try {
+            const spinner = ora('Updating contact ...').start();
+            let response = await axios.put(`${url}/updateContact/${contact.id}` , contact)
+            spinner.stop()
+            console.log(chalk.cyanBright('Contact updated'))
+        } catch (error) {
+            console.log(error)
+        }
+    })()
 }
 export const deleteContact= (id: number) => {
-    axios.delete(url + '/deleteContact/' + id).then((response) => {
-        console.log(chalk.bgMagentaBright('Contact deleted'))
-    }, err => console.log(err))
+    (async () => {
+        try {
+            const spinner = ora('Deleting contact ...').start();
+            let response = await axios.delete(`${url}/deleteContact/${id}`)
+            spinner.stop()
+            console.log(chalk.bgMagentaBright('Contact deleted'))
+        } catch (error) {
+            console.log(error)
+        }
+    })()
 }
 export const getContactList= () => {
-    axios.get(url + '/getContactList').then((response) => {
-        var obj = response.data.res
-        console.log(chalk.green('**********=== Contacts List===**********'))
-        for (var key in obj) {
-            console.log(chalk.blue('==============='))
-            console.log(chalk.greenBright('id:' +key + '\nFirstname: ' + obj[key].firstname + '\nLastname:' + obj[key].lastname + '\nEmail:' + obj[key].email))
+    (async () => {
+        try {
+            const spinner = ora('Fetching All Contacts ...').start();
+            let response = await axios.get(`${url}/getContactList`)
+            spinner.stop()
+            var obj = response.data.res
+            console.log(chalk.green('**********=== Contacts List===**********'))
+            for (var key in obj) {
+                console.log(chalk.blue('==============='))
+                console.log(chalk.greenBright(`id: ${key} \nFirstname: ${obj[key].firstname} \nLastname: ${obj[key].lastname} \nPhone Number: ${obj[key].phone} \nEmail: ${obj[key].email}`))
+            }
+        } catch (error) {
+            console.log(error)
         }
-    }, err => console.log(err))
-}
-export const sendMail= (arg: any) => {
-
+    })()
 }

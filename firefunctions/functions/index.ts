@@ -12,18 +12,19 @@ exports.addContact = functions.https.onRequest((request: any, response: any) => 
             contactsRef.push({
                 firstname: request.body.firstname,
                 lastname: request.body.lastname,
+                phone: request.body.phone,
                 email: request.body.email
             })
         })
         response.send({'msg': 'Done', 'data': {
                 firstname: request.body.firstname,
                 lastname: request.body.lastname,
+                phone: request.body.phone,
                 email: request.body.email
         }});
 })
 
 exports.getContactList = functions.https.onRequest((request: any, response: any) => {
-    console.log('getContacts')
     contactsRef.once('value', (data) => {
         response.send({
             'res': data.val()
@@ -36,10 +37,10 @@ const app: express.Application = express();
 app.use(cors({origin: true}))
 
 app.put('/:id', (req: any, res: any, next: any) => {
-    console.log('put')
     admin.database().ref('/contacts/' + req.params.id).update({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
+        phone: req.body.phone,
         email: req.body.email
     })
     res.send(req.body)
@@ -47,14 +48,12 @@ app.put('/:id', (req: any, res: any, next: any) => {
 })
 
 app.delete('/:id', (req: any, res: any, next: any) => {
-    console.log('delete')
     admin.database().ref('/contacts/' + req.params.id).remove()
     res.send(req.params.id)
     next()
 })
 
 app.get('/:id', (req: any, res: any, next: any) => {
-    console.log('get')
     admin.database().ref('/contacts/' + req.params.id).once('value', (data) => {
         var sn = data.val()
         res.send({
