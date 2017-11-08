@@ -49,40 +49,40 @@ This is a command-line contact management system app built with TypeScript, Node
 **_If you want to run the JavaScript code, First run ``` npm link ```._**
 
 ###### Adding contact
-####### TypeScript
+###### TypeScript
 ```sh
 ts-node contact a
 ```
-####### JavaScript
+###### JavaScript
 ```sh
 contact a
 ```
 
 ###### Deleting contact
-####### TypeScript
+###### TypeScript
 ```
 ts-node d
 ```
-####### JavaScript
+###### JavaScript
 ```sh
 contact d
 ```
 
 ###### Viewing Contacts
-####### TypeScript
+###### TypeScript
 ```
 ts-node contact l
 ```
-####### JavaScript
+###### JavaScript
 ```sh
 contact l
 ```
 ###### Viewing a Contact
-####### TypeScript
+###### TypeScript
 ```sh
 ts-node contact g
 ```
-####### JavaScript
+###### JavaScript
 ```sh
 contact g
 ```
