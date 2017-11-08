@@ -6,15 +6,15 @@ This is a command-line contact management system app built with TypeScript, Node
 ### Technologies:
 - JavaScript
 - Node.js
+- TypeScript
+- Firebase
+- Firebase Cloud Functions
 
 ### Features
 - Add a contact
 - Delete a contact
-- Send a stored contact a text message
-- View message log
-- Send a stored contact an email
+- View a contact
 - View all contacts
-- Search for a specific number
 
 ### Installation
 * Git clone this repo [here](https://github.com/philipszdavido/contact-manager).
@@ -72,42 +72,15 @@ node delete deleteall
 node delete <contact name>
 ```
 
-###### Searching
-```
-node search <contact name>
-```
-
 ###### Viewing Contacts
 **To view all contacts, run:**
 ```
-node viewall
+ts-node contact l
 ```
 *You can run `viewall` with the `-sort` flag if you want contacts ordered alphabetically:*
 ```
-node viewall -sort
+ts-node contact l
 ```
-
-###### Texting
-```
-node text <contact name> -m "message body"
-```
-**Sent messages are stored in a log.**
-*To view all messages in log:*
-```
-node text log
-```
-*To view all messages sent to a particular contact:*
-```
-node text log <contact name>
-```
-
-###### Sending Email
-```
-node mail <contact name> -m "message body"
-```
-**To use the mail.js file, please provide your API KEY from SendGrid.com**
-
-**To use a different `from email` from mine, input it in the `from` field in the code**
 
 ### Contribute
 1. Fork this repository
