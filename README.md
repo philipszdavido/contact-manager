@@ -18,7 +18,7 @@ This is a command-line contact management system app built with TypeScript, Node
 
 ### Installation
 * Git clone this repo [here](https://github.com/philipszdavido/contact-manager).
-* install ts-node globally `npm i ts-node -g` to be able to run the ts scripts directly.
+* install ts-node globally `npm i ts-node -g` to be able to run the `ts` scripts directly.
 * Move into the folder 
 ```sh
     cd contact-manager
@@ -44,44 +44,48 @@ This is a command-line contact management system app built with TypeScript, Node
     updateContact|u    Update Contact
     deleteContact|d    Delete a contact
     getContactList|l   Get Contact List
+
 ## USING THE APP
-**_If you're on a Mac or Linux, you can run all the commands below without the `node` prefix._**
+**_If you want to run the JavaScript code, First run ``` npm link ```._**
 
-**If you're using the app for the first time, run:**
+###### Adding contact
+####### TypeScript
+```sh
+ts-node contact a
 ```
-node add init
+####### JavaScript
+```sh
+contact a
 ```
 
-###### Adding
+###### Deleting contact
+####### TypeScript
 ```
-node add -n <contact name> -p <phone number> -e <email>
+ts-node d
 ```
-*You can add either a phone number or email but never none of both*
-
-*You can also add a phone number or email to a contact that didn't have them*
-
-###### Deleting
-**You can either delete a particular contact or delete everything in your contact list**
-
-*To delete all entries:*
-```
-node delete deleteall
-```
-*To delete particular contact:*
-```
-node delete <contact name>
+####### JavaScript
+```sh
+contact d
 ```
 
 ###### Viewing Contacts
-**To view all contacts, run:**
+####### TypeScript
 ```
 ts-node contact l
 ```
-*You can run `viewall` with the `-sort` flag if you want contacts ordered alphabetically:*
+####### JavaScript
+```sh
+contact l
 ```
-ts-node contact l
+###### Viewing a Contact
+####### TypeScript
+```sh
+ts-node contact g
 ```
-
+####### JavaScript
+```sh
+contact g
+```
 ### Contribute
 1. Fork this repository
 2. Clone it to your local machine
@@ -95,6 +99,3 @@ ts-node contact l
 ### Support
 If you are having issues, please let me know.
 Mail me at: kurtwanger40@gmail.com
-
-### License
-The project is licensed under the MIT license.
