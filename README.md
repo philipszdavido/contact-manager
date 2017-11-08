@@ -61,7 +61,7 @@ contact a
 ### Deleting a contact
 ###### TypeScript
 ```
-ts-node d
+ts-node contact d
 ```
 ###### JavaScript
 ```sh
